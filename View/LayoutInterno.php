@@ -62,7 +62,7 @@ function Navbar()
         <div id="overlay" class="overlay"></div>
 
         <nav id="topbar" class="navbar bg-white border-bottom fixed-top topbar px-3">
-            <button id="toggleBtn" class="d-none d-lg-inline-flex btn btn-light btn-icon btn-sm">
+            <button id="toggleBtn" class="btn btn-light btn-icon btn-sm d-none d-lg-inline-flex">
                 <i class="ti ti-layout-sidebar-left-expand"></i>
             </button>
 
@@ -74,7 +74,7 @@ function Navbar()
                 <ul class="list-unstyled d-flex align-items-center mb-0 gap-1">
                     <li class="ms-3 dropdown">
                         <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/icons/user.svg" alt="User" class="avatar avatar-sm rounded-circle bg-light p-1" style="width: 32px; height: 32px;" />
+                            <i class="ti ti-user-circle fs-2 text-secondary"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end p-0" style="min-width: 200px;">
                             <div>
@@ -92,8 +92,11 @@ function Navbar()
                 </ul>
             </div>
         </nav>
+        
         <main class="main-content">
-            <div class="container-fluid px-4">
+            <div class="container-fluid pt-4">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-12 col-md-11 col-lg-9 col-xl-8 text-center">
     ';
 }
 
@@ -134,7 +137,7 @@ function Sidebar()
 function Footer()
 {
     echo '
-                <div class="row w-100 mt-5">
+                    </div> </div> <div class="row w-100 mt-4">
                     <div class="col-12">
                         <footer class="text-center py-3 text-secondary border-top bg-white rounded shadow-sm mb-4">
                             <p class="mb-0 small">Copyright © ' . date("Y") . ' - Universidad Fidélitas. Todos los derechos reservados.</p>
