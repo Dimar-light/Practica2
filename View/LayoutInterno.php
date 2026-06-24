@@ -1,42 +1,153 @@
 <?php
+
 function ImportCSS()
 {
     echo '
         <head>
         <meta charset="UTF-8" />
         <title>Tienda de Mascotas</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="/Practica2/View/css/tabler-icons.min.css" />
-        <link rel="stylesheet" href="/Practica2/View/css/main.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+        <link rel="stylesheet" href="/Practica2/View/css/main.css" />
         
         <style>
-            body {
-                background-color: #f5f6fa !important; 
-                background-image: none !important;    
+            body{
+                background:#f4f6f9 !important;
+                background-image:none !important;
+                overflow-x:hidden;
             }
-            #db-wrapper {
-                display: flex;
-                min-height: 100vh;
-                position: relative;
+
+            .main-content{
+                margin-left:250px !important;
+                width:calc(100% - 250px) !important;
+                min-height:100vh !important;
+                padding:110px 30px 40px 30px !important;
+                display:flex !important;
+                flex-direction:column !important;
+                justify-content:flex-start !important;
+                align-items:center !important;
             }
-            #topbar {
-                z-index: 999 !important; 
-                left: 250px; 
-                width: calc(100% - 250px);
+
+            #topbar{
+                left:250px !important;
+                width:calc(100% - 250px) !important;
+                height:70px !important;
+                background:#fff !important;
+                box-shadow:
+                    0 2px 10px rgba(0,0,0,.05) !important;
+                z-index:1030 !important;
             }
-            .main-content {
-                margin-left: 250px; 
-                width: calc(100% - 250px);
-                padding-top: 80px !important; 
-                min-height: 100vh;
-                background: #f5f6fa !important;
+
+            .main-content .card, .card-table{
+                width:100% !important;
+                max-width:900px !important;
+                border:none !important;
+                border-radius:18px !important;
+                overflow:hidden !important;
+                box-shadow:
+                    0 12px 35px rgba(0,0,0,.08),
+                    0 3px 12px rgba(0,0,0,.05) !important;
+                margin-top: 20px;
             }
-            .card {
-                border: none !important;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+
+            .card-header{
+                background:linear-gradient(
+                    135deg,
+                    #ff6b35,
+                    #f04e23
+                ) !important;
+                color:white !important;
+                border:none !important;
+                padding:18px 25px !important;
+                font-size:1.4rem !important;
+                font-weight:600 !important;
             }
+
+            .card-body{
+                padding:30px !important;
+            }
+
+            .card-body form,
+            .card-body .mb-3{
+                text-align:left !important;
+            }
+
+            .form-label{
+                font-weight:600;
+                color:#495057;
+                margin-bottom:8px;
+            }
+
+            .form-control{
+                height:52px !important;
+                border-radius:10px !important;
+                border:1px solid #dee2e6 !important;
+                padding:12px 15px !important;
+                transition:all .3s ease;
+            }
+
+            .form-control:focus{
+                border-color:#ff6b35 !important;
+                box-shadow:
+                    0 0 0 .20rem rgba(255,107,53,.15) !important;
+            }
+
+            .btn-primary{
+                height:52px !important;
+                border:none !important;
+                border-radius:10px !important;
+                background:linear-gradient(
+                    135deg,
+                    #4338ca,
+                    #312e81
+                ) !important;
+                font-weight:600 !important;
+                transition:all .3s ease;
+            }
+
+            .btn-primary:hover{
+                transform:translateY(-2px);
+                box-shadow:
+                    0 10px 20px rgba(67,56,202,.25);
+            }
+
+            .app-footer{
+                width:100%;
+                max-width:900px;
+                margin-top:25px;
+                background:white;
+                border-radius:15px;
+                padding:18px;
+                text-align:center;
+                color:#6c757d;
+                box-shadow:
+                    0 4px 15px rgba(0,0,0,.05);
+            }
+
+            .app-footer p{
+                margin:0;
+                font-size:14px;
+            }
+
+            @media(max-width:991px){
+                .main-content{
+                    margin-left:0 !important;
+                    width:100% !important;
+                    padding:100px 15px 30px 15px !important;
+                }
+                #topbar{
+                    left:0 !important;
+                    width:100% !important;
+                }
+                .main-content .card, .card-table{
+                    max-width:100% !important;
+                }
+                .app-footer{
+                    max-width:100%;
+                }
+            }
+
         </style>
         </head>
         <body>
@@ -61,7 +172,7 @@ function Navbar()
     echo '
         <div id="overlay" class="overlay"></div>
 
-        <nav id="topbar" class="navbar bg-white border-bottom fixed-top topbar px-3">
+        <nav id="topbar" class="navbar bg-white border-bottom fixed-top px-3">
             <button id="toggleBtn" class="btn btn-light btn-icon btn-sm d-none d-lg-inline-flex">
                 <i class="ti ti-layout-sidebar-left-expand"></i>
             </button>
@@ -70,33 +181,13 @@ function Navbar()
                 <i class="ti ti-layout-sidebar-left-expand"></i>
             </button>
             
-            <div class="ms-auto">
-                <ul class="list-unstyled d-flex align-items-center mb-0 gap-1">
-                    <li class="ms-3 dropdown">
-                        <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="ti ti-user-circle fs-2 text-secondary"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end p-0" style="min-width: 200px;">
-                            <div>
-                                <div class="d-flex gap-3 align-items-center border-dashed border-bottom px-3 py-3">
-                                    <div>
-                                        <h4 class="mb-0 small fw-bold">Tienda de Mascotas</h4>
-                                    </div>
-                                </div>
-                                <div class="p-3 d-flex flex-column gap-1 small lh-lg">
-                                    <a href="RegistroCliente.php" class="text-decoration-none text-dark"><span>Inicio</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+            <div class="ms-auto d-flex align-items-center gap-2">
+                <span class="text-secondary small fw-medium">Bienvenido(a) a la Práctica #2</span>
+                <i class="ti ti-user-circle fs-3 text-secondary ms-2"></i>
             </div>
         </nav>
         
         <main class="main-content">
-            <div class="container-fluid pt-4">
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-12 col-md-11 col-lg-9 col-xl-8 text-center">
     ';
 }
 
@@ -126,7 +217,7 @@ function Sidebar()
             <li class="nav-item">
                 <a class="nav-link" href="ConsultaMascotas.php">
                     <i class="ti ti-table"></i>
-                    <span class="nav-text">Consulta General</span>
+                    <span class="nav-text">Consulta Mascotas</span>
                 </a>
             </li>
         </ul>
@@ -137,14 +228,11 @@ function Sidebar()
 function Footer()
 {
     echo '
-                    </div> </div> <div class="row w-100 mt-4">
-                    <div class="col-12">
-                        <footer class="text-center py-3 text-secondary border-top bg-white rounded shadow-sm mb-4">
-                            <p class="mb-0 small">Copyright © ' . date("Y") . ' - Universidad Fidélitas. Todos los derechos reservados.</p>
-                        </footer>
-                    </div>
-                </div>
-            </div> 
-        </main> 
+            <footer class="app-footer">
+                <p>
+                    © ' . date("Y") . ' Universidad Fidélitas - Todos los derechos reservados.
+                </p>
+            </footer>
+        </main>
     ';
 }

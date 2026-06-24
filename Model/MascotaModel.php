@@ -9,10 +9,11 @@ function RegistrarClienteModel($cedula, $nombre, $correo)
         $response = $conn->query($sql);
         CloseDB($conn);
         return $response;
-    } catch(Exception $e) {
+    } catch (Exception $e) {
         AddError($e, 'RegistrarClienteModel', 0);
         return false;
     }
+
 }
 
 function RegistrarMascotaModel($nombre, $especie, $raza, $peso, $cedula)
@@ -23,7 +24,7 @@ function RegistrarMascotaModel($nombre, $especie, $raza, $peso, $cedula)
         $response = $conn->query($sql);
         CloseDB($conn);
         return $response;
-    } catch(Exception $e) {
+    } catch (Exception $e) {
         AddError($e, 'RegistrarMascotaModel', 0);
         return false;
     }
@@ -37,13 +38,13 @@ function ConsultarMascotasModel()
         $response = $conn->query($sql);
 
         $datos = array();
-        while($fila = $response->fetch_assoc()) {
+        while ($fila = $response->fetch_assoc()) {
             $datos[] = $fila;
         }
 
         CloseDB($conn);
         return $datos;
-    } catch(Exception $e) {
+    } catch (Exception $e) {
         AddError($e, 'ConsultarMascotasModel', 0);
         return null;
     }
